@@ -13,15 +13,14 @@ import com.aventstack.extentreports.Status;
 
 import global.compo.extantReporter;
 
-public class Listeners extends BaseTest implements ITestListener{
-	ExtentReports extent= extantReporter.extentSparkReporter();
+public class Listeners extends BaseTest implements ITestListener {
+	ExtentReports extent = extantReporter.extentSparkReporter();
 	ExtentTest test;
-
 
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
-		test=extent.createTest(result.getMethod().getMethodName());
+		test = extent.createTest(result.getMethod().getMethodName());
 
 	}
 
@@ -30,7 +29,6 @@ public class Listeners extends BaseTest implements ITestListener{
 		// TODO Auto-generated method stub
 		test.log(Status.PASS, "Test Passed");
 
-		
 	}
 
 	@Override
@@ -38,46 +36,45 @@ public class Listeners extends BaseTest implements ITestListener{
 		// TODO Auto-generated method stub
 		test.fail(result.getThrowable());
 		try {
-			driver=(WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
-		}
-		catch(Exception e1){
-			
+			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+		} catch (Exception e1) {
+
 			e1.printStackTrace();
 		}
 		String filepath = null;
 		try {
-			filepath = screenShot(result.getMethod().getMethodName(),driver);
+			filepath = screenShot(result.getMethod().getMethodName(), driver);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		test.addScreenCaptureFromPath(filepath, result.getMethod().getMethodName());
-		
+
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onStart(ITestContext context) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub
 		extent.flush();
-		
+
 	}
 
 }
