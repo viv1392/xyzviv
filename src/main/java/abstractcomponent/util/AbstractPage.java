@@ -28,5 +28,4 @@ public class AbstractPage {
 	public void WindowsNavigate() {
 		driver.navigate().back();
 	}
-
 }
