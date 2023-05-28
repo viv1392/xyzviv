@@ -31,7 +31,6 @@ public class PageTest extends BaseTest {
 		chk1.Continue();
 		chk1.Finish();
 		chk1.OrderConfirmation();
-		
 	}
 	@DataProvider
 	public Object[][] datainit() throws IOException {
