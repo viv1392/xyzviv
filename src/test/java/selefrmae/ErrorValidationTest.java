@@ -47,5 +47,4 @@ public class ErrorValidationTest extends BaseTest {
 			
 	return new Object[][] {{data.get(0)}};
 	}
-
 }
